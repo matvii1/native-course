@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView, StyleSheet } from 'react-native'
+import Form from './components/Form'
+import Header from './components/Header'
+import List from './components/List'
+import ItemProvider from './contexts/itemProvider'
+import 'react-native-get-random-values'
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ItemProvider>
+      <SafeAreaView style={styles.container}>
+        <Header />
+        <Form />
+        <List />
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </ItemProvider>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-});
+  list: {
+    flex: 1,
+  },
+})
+
+export default App
